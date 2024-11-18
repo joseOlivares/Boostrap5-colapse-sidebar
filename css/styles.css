@@ -1,0 +1,42 @@
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #sidebar {
+    transition: width 0.3s;
+    height: 100%; /* Ensures the sidebar spans the full height */
+  }
+
+  #sidebar.collapsed {
+    width: 60px;
+  }
+
+  #sidebar.expanded {
+    width: 200px;
+  }
+
+  #sidebar .nav-link {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .menu-text {
+    display: none;
+  }
+
+  #sidebar.expanded .menu-text {
+    display: inline;
+  }
+
+  #content {
+    flex-grow: 1;
+    overflow-y: auto; /* Allows scrolling for long content */
+  }
