@@ -10,30 +10,54 @@ body, html {
   }
 
   #sidebar {
-    transition: width 0.3s;
-    height: 100%; /* Ensures the sidebar spans the full height */
+    height: 100%;
+    width: 60px; /* Collapsed width */
+    background-color: #343a40;
+    color: white;
+    transition: width 0.3s ease; /* Uniform transition */
+    position: relative;
   }
 
-  #sidebar.collapsed {
-    width: 60px;
-  }
-
-  #sidebar.expanded {
-    width: 200px;
+  #sidebar:hover {
+    width: 200px; /* Expanded width */
   }
 
   #sidebar .nav-link {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    width: 100%; /* Ensure it takes the full sidebar width */
+    transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease; /* Sync width */
   }
 
   .menu-text {
-    display: none;
+    opacity: 0;
+    margin-left: 10px;
+    transition: opacity 0.3s ease, margin-left 0.3s ease; /* Match sidebar transition */
   }
 
-  #sidebar.expanded .menu-text {
-    display: inline;
+  #sidebar:hover .menu-text {
+    opacity: 1;
+    margin-left: 15px;
+  }
+
+  #sidebar .nav-link.active {
+    background-color: #495057;
+    color: #ffffff;
+  }
+
+  /* Ensure the active menu item respects the sidebar state */
+  #sidebar:not(:hover) .nav-link.active {
+    width: 60px; /* Match collapsed sidebar width */
+    transition: width 0.3s ease; /* Sync with sidebar */
+  }
+
+  #sidebar:not(:hover) .nav-link.active .menu-text {
+    opacity: 0; /* Hide text when collapsed */
+    margin-left: 0; /* Remove spacing */
   }
 
   #content {

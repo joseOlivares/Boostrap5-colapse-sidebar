@@ -48,6 +48,17 @@
       sidebar.classList.toggle('collapsed');
       sidebar.classList.toggle('expanded');
     });
+
+        // Highlight the active menu item dynamically
+        const links = document.querySelectorAll('#sidebar .nav-link');
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            // Remove active class from all links
+            links.forEach(l => l.classList.remove('active'));
+            // Add active class to the clicked link
+            link.classList.add('active');
+          });
+        });
   </script>
 
   <!-- Bootstrap Icons -->
